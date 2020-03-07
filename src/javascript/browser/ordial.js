@@ -7,6 +7,7 @@ var CritterGutsView = require("./CritterGutsView");
 var WorldView = require("./views/WorldView");
 var SaveControlsView = require("./views/SaveControlsView");
 var TimeoutControlsView = require("./views/TimeoutControlsView");
+var GetServerWorldView = require("./views/GetServerWorldView");
 var Seed = require("../lib/models/Seed");
 var Backbone = require("backbone");
 var SingletonContext = require("../lib/SingletonContext");
@@ -30,7 +31,7 @@ var Ordial = Backbone.View.extend({
 
       }, this));
 
-
+    this.getServerWorldView = new GetServerWorldView({el: '#getserverworld'});
     this.seedView = new SeedView({ model: new Seed(), el: '#seedContainer' });
 
     this.pauseView = new PauseView({ paused: this.paused, el: '#pauseContainer' });
@@ -55,6 +56,7 @@ var Ordial = Backbone.View.extend({
     this.timeoutControlsView.render();
     this.saveControlsView.render();
     this.critterManaView.render();
+    this.getServerWorldView.render();
   },
 
   togglePause: function () {
